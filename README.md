@@ -1,10 +1,18 @@
+## 介绍
 基于vue ivew
 感谢XXXX
-Install
+
+## Install
+```bush
 // install dependencies
 npm install
-Run
-Development
+```
+## Run
+### Development
+```bush
 npm run dev
-Production(Build)
+```
+### Production(Build)
+```bush
 npm run build
+```
