@@ -24,23 +24,26 @@
                      </div> 
                 </div>
                 <div class="header-avator-con">
-                    <message-tip v-model="mesCount"></message-tip>
-                    <language></language>
+                    <message-tip v-model="mesCount"></message-tip>   
                     <div class="user-dropdown-menu-con">
                         <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
-                            <Dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
+                            <Dropdown transfer trigger="hover" @on-click="handleClickUserDropdown">
                                 <i class="fa fa-user-circle-o fa-lg"></i>
-                                <span class="main-user-name">{{ userName }}</span>
-                                <i class="fa fa-arrow-down fa-lg"></i>
+                                <i class="fa fa-angle-down fa-lg"></i>
                                 <DropdownMenu slot="list">
-                                    <DropdownItem name="ownSpace">个人中心</DropdownItem>
+                                    <DropdownItem name="username" disabled>{{ userName }}</DropdownItem>
+                                    <DropdownItem name="ownSpace" divided>个人中心</DropdownItem>
                                     <DropdownItem name="loginout" divided>退出登录</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
                         </Row>
                     </div>
+                    <language></language>
                 </div>
             </div>
+        </div>
+        <div class= "main-filter">
+            <main-filter></main-filter>
         </div>
         <div class="single-page-con" :style="{left:'200px'}">
             <div class="single-page">
@@ -59,6 +62,7 @@ Vue.use(VueI18n);
 import shrinkableMenu from './main-components/shrinkable-menu/shrinkable-menu.vue';
 import messageTip from './main-components/message-tip.vue';
 import language from './main-components/lang.vue';
+import mainFilter from './main-components/main-filter.vue';
 import Cookies from 'js-cookie';
 import util from '@/libs/util.js';
 
@@ -66,7 +70,8 @@ export default {
     components: {
         shrinkableMenu,
         messageTip,
-        language
+        language,
+        mainFilter
     },
     data () {
         return {
@@ -114,14 +119,14 @@ export default {
         handleSubmenuChange (val) {}
     },
     watch: {
-        '$route' (to) {
-            this.$store.commit('setCurrentPageName', to.name);
-            let pathArr = util.setCurrentPath(this, to.name);
-            if (pathArr.length > 0) {
-                this.$store.commit('addOpenSubmenu', pathArr[0].name);
-            }
-            localStorage.currentPageName = to.name;
-        },
+        // '$route' (to) {
+        //     this.$store.commit('setCurrentPageName', to.name);
+        //     let pathArr = util.setCurrentPath(this, to.name);
+        //     if (pathArr.length > 0) {
+        //         this.$store.commit('addOpenSubmenu', pathArr[0].name);
+        //     }
+        //     localStorage.currentPageName = to.name;
+        // },
     },
     mounted () {
         this.init();

@@ -1,11 +1,18 @@
 <style lang="less">
+    .lang{
+        position: absolute;
+        right: 10px;
+        top: 0;
+        transform: translateY(30%);
+        height: 100%;
+    }
     .header-aside-lang{
         display: inline-block;
-        height: 16px;
-        width: 16px;
+        height: 23px;
+        width: 23px;
         border: 1px solid #fff;
         border-radius: 50%;
-        // padding: 2px;
+        padding: 2px;
         text-align: center;
         line-height: 16px;
         font-size: 12px;
@@ -14,9 +21,9 @@
 </style>
 
 <template>
-    <div style="display:inline-block;padding:0 6px;">
-        <a v-show="lang == 'zh-CN'" class="header-aside-lang" @click="handleSwitch('en-US')">E</a>
-        <a v-show="lang == 'en-US'" class="header-aside-lang" @click="handleSwitch('zh-CN')">C</a>
+    <div class="lang">
+        <a v-show="lang == 'zh-CN'" class="header-aside-lang" @click="handleSwitch('en-US')">EN</a>
+        <a v-show="lang == 'en-US'" class="header-aside-lang" @click="handleSwitch('zh-CN')">CN</a>
     </div>
 </template>
 
